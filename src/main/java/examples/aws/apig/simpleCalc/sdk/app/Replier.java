@@ -55,7 +55,11 @@ public class Replier {
     }
 
     public String reply(String line) {
-        CommandArgument commandArgument = commandProcessor.parseCommand(line);
-        return mapExecutor.get(commandArgument.getCommand()).apply(commandArgument.getArgument());
+        try {
+            CommandArgument commandArgument = commandProcessor.parseCommand(line);
+            return mapExecutor.get(commandArgument.getCommand()).apply(commandArgument.getArgument());
+        } catch (IllegalArgumentException e) {
+            return "Illegal command";
+        }
     }
 }

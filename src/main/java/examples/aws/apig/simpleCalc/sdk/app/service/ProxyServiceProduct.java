@@ -3,6 +3,7 @@ package examples.aws.apig.simpleCalc.sdk.app.service;
 import com.amazonaws.SdkClientException;
 import com.google.gson.Gson;
 import examples.aws.apig.simpleCalc.sdk.SimpleCalcSdk;
+import examples.aws.apig.simpleCalc.sdk.model.SimpleCalcSdkException;
 
 public class ProxyServiceProduct implements ServiceProduct {
 
@@ -25,7 +26,7 @@ public class ProxyServiceProduct implements ServiceProduct {
     public String delete(String id) {
         try {
             return serviceProduct.delete(id);
-        } catch (SdkClientException e) {
+        } catch (SimpleCalcSdkException e) {
             return "invalid id";
         }
     }
